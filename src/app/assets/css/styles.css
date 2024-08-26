@@ -152,9 +152,10 @@ h2:hover::before {
   outline: none;
 }
 .todo__text__box {
-  width: 100%;
+  width: 85%;
   text-align: left;
   color: #fff;
+  word-break: break-all;
 }
 .todo__button__box img {
   cursor: pointer;
@@ -165,8 +166,9 @@ h2:hover::before {
 }
 
 .adjustments__input__edit .todo__button__box img {
-   background-image: url('data:image/svg+xml;base64,...');
-  filter: invert(32%) sepia(89%) saturate(398%) hue-rotate(309deg) brightness(95%) contrast(94%);
+  background-image: url("data:image/svg+xml;base64,...");
+  filter: invert(32%) sepia(89%) saturate(398%) hue-rotate(309deg)
+    brightness(95%) contrast(94%);
 }
 
 .todo__button__box {
@@ -303,6 +305,9 @@ input::placeholder {
     top: 165px;
     right: -65px;
   }
+  .todo__text__box {
+    width: 80%;
+  }
 }
 
 @media screen and (max-width: 425px) {
@@ -345,6 +350,9 @@ input::placeholder {
   .main__container::before {
     display: none;
   }
+  .todo__text__box {
+    width: 80%;
+  }
 }
 
 @media screen and (max-width: 375px) {
@@ -362,5 +370,8 @@ input::placeholder {
   }
   .main__container {
     width: 80%;
+  }
+  .todo__text__box {
+    width: 70%;
   }
 }
