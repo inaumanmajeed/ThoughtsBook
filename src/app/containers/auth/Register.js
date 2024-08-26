@@ -37,7 +37,7 @@ const Register = () => {
   };
 
   if (isSignedUp) {
-    navigate("/login");
+    navigate("/");
   }
 
   return (
