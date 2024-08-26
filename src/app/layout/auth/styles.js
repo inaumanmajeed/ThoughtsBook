@@ -22,6 +22,9 @@ const AuthInputContainer = styled("div")(({ theme }) => ({
   background: "rgb(255 255 255 / 11%)",
   backdropFilter: "blur(10px)",
   boxShadow: "0 0 10px rgba(0, 0, 0, 0.2)",
+  [theme.breakpoints.down("md")]: {
+    width: "calc(100% - 40px)",
+  },
 }));
 
 const InputForm = styled("div")(({ theme }) => ({
@@ -42,6 +45,9 @@ const GapDiv = styled("div")(({ theme }) => ({
   padding: "20px",
   border: "1px solid rgba(255, 255, 255, 0.1)",
   backdropFilter: "blur(10px)",
+  [theme.breakpoints.down("md")]: {
+    width: "100%",
+  },
   "& .children__input": {
     display: "flex",
     flexDirection: "column",
