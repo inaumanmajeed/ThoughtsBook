@@ -14,6 +14,7 @@ import CustomInput from "../shared/Input";
 import EditIcon from "app/assets/images/dashboard/edit.svg";
 import DeleteIcon from "app/assets/images/dashboard/delete.svg";
 import SaveIcon from "app/assets/images/dashboard/done.svg";
+import { toast } from "react-toastify";
 
 const TodoList = () => {
   const [todos, setTodos] = useState([]);
@@ -25,7 +26,7 @@ const TodoList = () => {
   useEffect(() => {
     const userId = auth.currentUser ? auth.currentUser.uid : null;
     if (!userId) {
-      alert("You must be logged in to view todos.");
+      toast.error("You must be logged in to view todos.");
       return;
     }
 
@@ -43,7 +44,8 @@ const TodoList = () => {
         setLoading(false);
       },
       (error) => {
-        console.error("Error fetching todos: ", error);
+        // console.error("Error fetching todos: ", error);
+        toast.error("Failed to fetch todos. Please try again.");
         setLoading(false);
       }
     );
@@ -56,24 +58,26 @@ const TodoList = () => {
   };
 
   const handleSaveClick = async (todoId, newText) => {
+    toast.dismiss();
     if (!newText.trim()) {
-      alert("Todo text cannot be empty.");
+      toast.error("Todo text cannot be empty.");
       return;
     }
 
     try {
       const userId = auth.currentUser ? auth.currentUser.uid : null;
       if (!userId) {
-        alert("You must be logged in to update todos.");
+        toast.error("You must be logged in to update todos.");
         return;
       }
 
       const todoRef = doc(db, `todos/${userId}/items/${todoId}`);
       await updateDoc(todoRef, { text: newText });
       setEditableTodoId(null);
+      toast.success("Todo updated successfully!");
     } catch (err) {
       console.error("Error updating todo: ", err);
-      alert("Failed to update todo. Please try again.");
+      toast.error("Failed to update todo. Please try again.");
     }
   };
 
@@ -82,16 +86,23 @@ const TodoList = () => {
       try {
         const userId = auth.currentUser ? auth.currentUser.uid : null;
         if (!userId) {
-          alert("You must be logged in to delete todos.");
+          toast.error("You must be logged in to delete todos.");
           return;
         }
 
         const todoRef = doc(db, `todos/${userId}/items/${todoId}`);
         await deleteDoc(todoRef);
+        toast.success("Todo deleted successfully!");
       } catch (err) {
         console.error("Error deleting todo: ", err);
-        alert("Failed to delete todo. Please try again.");
+        toast.error("Failed to delete todo. Please try again.");
       }
+    }
+  };
+
+  const handleKeyPress = (e, todoId, todoText) => {
+    if (e.key === "Enter") {
+      handleSaveClick(todoId, todoText);
     }
   };
 
@@ -119,6 +130,7 @@ const TodoList = () => {
                 )
               }
               onBlur={(e) => handleSaveClick(todo.id, e.target.value)}
+              onKeyPress={(e) => handleKeyPress(e, todo.id, todo.text)}
               placeholder="Edit todo"
               autoFocus
             />

@@ -6,25 +6,25 @@ const CustomButton = ({
   onClick,
   type = "button",
   disabled = false,
-    className,
+  className,
   BtnCenter = false,
   width,
   ...props
 }) => {
-    return (
-      <BTNcenter BtnCenter={BtnCenter}>
-        <CustomBTN
-          width={width}
-          onClick={onClick}
-          type={type}
-          disabled={disabled}
-          className={className}
-          {...props}
-        >
-          {title}
-        </CustomBTN>
-      </BTNcenter>
-    );
+  return (
+    <BTNcenter BtnCenter={BtnCenter}>
+      <CustomBTN
+        width={width}
+        onClick={onClick}
+        type={type}
+        disabled={disabled}
+        className={className}
+        {...props}
+      >
+        {title}
+      </CustomBTN>
+    </BTNcenter>
+  );
 };
 
 export default CustomButton;

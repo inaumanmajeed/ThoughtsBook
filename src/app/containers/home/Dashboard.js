@@ -3,6 +3,7 @@ import { styled } from "@mui/material/styles";
 import { getAuth, signOut } from "firebase/auth";
 import ThoughtsBookMainComponent from "app/components/todo/TodoCardMain";
 import CustomButton from "app/components/shared/CustomButton";
+import { toast } from "react-toastify";
 
 const HomeContainer = styled("div")(({ theme }) => ({
   display: "flex",
@@ -20,9 +21,11 @@ const Dashboard = () => {
     signOut(auth)
       .then(() => {
         console.log("User signed out");
+        toast.success("Logged out successfully!");
       })
       .catch((error) => {
         console.error("Error signing out: ", error);
+        toast.error("Failed to log out. Please try again.");
       });
   };
 
