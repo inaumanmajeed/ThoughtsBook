@@ -16,7 +16,7 @@ const CustomInputMainContainer = styled("div")(
       color: "#fff",
     },
     "& input": {
-      padding: "8px",
+      padding: "8px 35px 8px 8px",
       fontSize: "1rem",
       backgroundColor: "#eeeeee",
       border: "1px solid transparent",
