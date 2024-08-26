@@ -4,7 +4,7 @@ import ProtectedRoute from "./ProtectedRoutes";
 
 const Login = lazy(() => import("app/containers/auth/Login"));
 const Register = lazy(() => import("app/containers/auth/Register"));
-const ForgotPassword = lazy(() => import("app/containers/auth/Resetpassword"));
+const ForgetPassword = lazy(() => import("app/containers/auth/Resetpassword"));
 const Dashboard = lazy(() => import("app/containers/home/Dashboard"));
 
 const RoutesMain = () => {
@@ -39,7 +39,7 @@ const RoutesMain = () => {
           path="/reset"
           element={
             <Suspense fallback={<div>Loading...</div>}>
-              <ForgotPassword />
+              <ForgetPassword />
             </Suspense>
           }
         />

@@ -1,45 +1,65 @@
 import React, { useState } from "react";
-import { authLogin } from "app/firebase/index";
+import { Formik, Form } from "formik";
+import { useNavigate } from "react-router-dom";
 import { sendPasswordResetEmail } from "firebase/auth";
 import { toast } from "react-toastify";
-import CustomInput from "app/components/shared/Input";
 import AuthLayout from "app/layout/auth/AuthLayout";
+import { validationSchemaEmail } from "app/utils/Validations";
 import CustomButton from "app/components/shared/CustomButton";
-import { useNavigate } from "react-router-dom";
+import ForgetPasswordComponent from "app/components/auth/ForgetPassword";
+import { authLogin } from "app/firebase/index";
 
-const ResetPassword = () => {
-  const [email, setEmail] = useState("");
+const initialValues = {
+  email: "",
+};
+
+const ForgetPassword = () => {
+  const [isSubmitted, setIsSubmitted] = useState(false);
   const navigate = useNavigate();
 
-  const handleResetPassword = async (e) => {
-    e.preventDefault();
+  const onSubmit = async (values, { setSubmitting }) => {
+    const { email } = values;
+    console.log("🚀 ~ onSubmit ~ email:", email);
 
     try {
+      // Send password reset email
       await sendPasswordResetEmail(authLogin, email);
-      toast.success("Password reset email sent!");
+      console.log("Password reset email sent successfully");
+
+      setIsSubmitted(true);
+      toast.success(
+        "Password reset email sent successfully. Please check your inbox."
+      );
       navigate("/");
     } catch (error) {
       console.error("Error sending password reset email:", error);
-      toast.error("Failed to send password reset email. Please try again.");
+      toast.error("Error sending password reset email. Please try again.");
+    } finally {
+      setSubmitting(false);
     }
   };
 
   return (
-    <AuthLayout login title={"Reset Password"}>
-      <form onSubmit={handleResetPassword}>
-        <div>
-          <CustomInput
-            noMargin
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            placeholder="Enter your email"
-            error={false}
-          />
-        </div>
-        <CustomButton BtnCenter width={"fit-content"} title={"Reset"} />
-      </form>
+    <AuthLayout reset title={"Forget Password"}>
+      <Formik
+        initialValues={initialValues}
+        onSubmit={onSubmit}
+        validationSchema={validationSchemaEmail}
+      >
+        {({ isSubmitting }) => (
+          <Form className="form__main">
+            <ForgetPasswordComponent />
+            <CustomButton
+              title={isSubmitted ? "Email Sent" : "Reset"}
+              type="submit"
+              BtnCenter
+              disabled={isSubmitted || isSubmitting}
+            />
+          </Form>
+        )}
+      </Formik>
     </AuthLayout>
   );
 };
 
-export default ResetPassword;
+export default ForgetPassword;
