@@ -1,0 +1,30 @@
+{
+  "files": {
+    "main.css": "/ThoughtsBook/static/css/main.c0cfb1d0.css",
+    "main.js": "/ThoughtsBook/static/js/main.f3f19f8f.js",
+    "static/js/789.9c062280.chunk.js": "/ThoughtsBook/static/js/789.9c062280.chunk.js",
+    "static/js/31.bf7f444a.chunk.js": "/ThoughtsBook/static/js/31.bf7f444a.chunk.js",
+    "static/js/436.40c5d8f4.chunk.js": "/ThoughtsBook/static/js/436.40c5d8f4.chunk.js",
+    "static/css/537.cf9c3fa7.chunk.css": "/ThoughtsBook/static/css/537.cf9c3fa7.chunk.css",
+    "static/js/537.e980a638.chunk.js": "/ThoughtsBook/static/js/537.e980a638.chunk.js",
+    "static/js/968.3b8f979b.chunk.js": "/ThoughtsBook/static/js/968.3b8f979b.chunk.js",
+    "static/js/150.ecf717fb.chunk.js": "/ThoughtsBook/static/js/150.ecf717fb.chunk.js",
+    "static/media/edit.svg": "/ThoughtsBook/static/media/edit.899b81054b4d753fb12b65be77e253ce.svg",
+    "static/media/delete.svg": "/ThoughtsBook/static/media/delete.15281aa53e1e4389c4ba1ad8b4db551e.svg",
+    "index.html": "/ThoughtsBook/index.html",
+    "static/media/done.svg": "/ThoughtsBook/static/media/done.f3123ca3a6dc752892c55a2a2c4203de.svg",
+    "main.c0cfb1d0.css.map": "/ThoughtsBook/static/css/main.c0cfb1d0.css.map",
+    "main.f3f19f8f.js.map": "/ThoughtsBook/static/js/main.f3f19f8f.js.map",
+    "789.9c062280.chunk.js.map": "/ThoughtsBook/static/js/789.9c062280.chunk.js.map",
+    "31.bf7f444a.chunk.js.map": "/ThoughtsBook/static/js/31.bf7f444a.chunk.js.map",
+    "436.40c5d8f4.chunk.js.map": "/ThoughtsBook/static/js/436.40c5d8f4.chunk.js.map",
+    "537.cf9c3fa7.chunk.css.map": "/ThoughtsBook/static/css/537.cf9c3fa7.chunk.css.map",
+    "537.e980a638.chunk.js.map": "/ThoughtsBook/static/js/537.e980a638.chunk.js.map",
+    "968.3b8f979b.chunk.js.map": "/ThoughtsBook/static/js/968.3b8f979b.chunk.js.map",
+    "150.ecf717fb.chunk.js.map": "/ThoughtsBook/static/js/150.ecf717fb.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.c0cfb1d0.css",
+    "static/js/main.f3f19f8f.js"
+  ]
+}
